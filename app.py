@@ -6,7 +6,7 @@ CHOICES = ["rock", "paper", "scissors"]
 
 def decide(user, comp):
     if user == comp:
-        return "tie"
+        return "draw"
     elif (user == "rock" and comp == "scissors") or \
          (user == "paper" and comp == "rock") or \
          (user == "scissors" and comp == "paper"):
