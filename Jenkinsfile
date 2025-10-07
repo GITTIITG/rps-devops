@@ -5,7 +5,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 dir("${WORKSPACE}") {
-                    sh 'docker-compose -f docker-compose.yml build'
+                    sh 'pwd'
+                    sh 'ls -la'
+                    sh 'docker-compose build'
                 }
             }
         }
@@ -13,7 +15,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 dir("${WORKSPACE}") {
-                    sh 'docker-compose -f docker-compose.yml up -d'
+                    sh 'docker-compose up -d'
                 }
             }
         }
