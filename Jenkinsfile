@@ -2,11 +2,15 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
-                dir("${WORKSPACE}") {
-                    sh 'pwd'
-                    sh 'ls -la'
+                dir("${WORKSPACE}") { // Ensure we are in Jenkins workspace
                     sh 'docker-compose build'
                 }
             }
