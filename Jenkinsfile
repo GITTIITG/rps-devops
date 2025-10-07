@@ -10,8 +10,8 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir("${WORKSPACE}") { // Ensure we are in Jenkins workspace
-                    sh 'docker-compose build'
+                dir("${WORKSPACE}") {
+                    sh 'docker-compose -f docker-compose.yml build'
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 dir("${WORKSPACE}") {
-                    sh 'docker-compose up -d'
+                    sh 'docker-compose -f docker-compose.yml up -d'
                 }
             }
         }
